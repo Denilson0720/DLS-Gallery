@@ -1,0 +1,109 @@
+
+.image-container{
+    /*
+    border-radius:10px;
+    border:2px solid #a6a6a6; 
+    */
+    border-radius:10px;
+    border-radius: 17px;
+    background: #f3ecec;
+    box-shadow:  -7px 7px 9px #b6b1b1,
+             7px -7px 9px #ffffff;
+}
+.login-img{
+    max-height:300px;
+    max-width:100%;
+    object-fit:cover;
+
+}
+.registration-img{
+    max-height:300px;
+    max-width:100%;
+    object-fit:cover;
+} 
+.title-container{
+    font-size: 1.5rem;
+    font-family:'Roboto Mono', monospace;
+}
+.txt-container{
+    font-family: 'Roboto Mono',monospace;
+    font-size: 1rem;
+}
+.quote-container{
+    padding-top: 2rem;
+    padding-bottom:2rem;
+    font-family: 'Roboto Mono',monospace;
+    /* font-size: 0.5rem; */
+    margin-top:2rem;
+    margin-bottom:3rem;
+}
+.quote-container>h2{
+    font-size: 1.5rem;
+}
+
+.footer-container{
+    margin-top: 2rem;
+    height:10rem;
+    /* margin-top:10rem; */
+}
+.navbar-main-container{
+    /* padding-top:2rem; */
+    height:6rem;
+}
+.navbar-body-container{
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    justify-content: center;
+    align-items: center;
+    margin-top:2rem;
+
+}
+.logo-container, .button-container{
+    /* margin-top:2rem; */
+}
+.button-container{
+    width:4rem;
+    height:auto;
+}
+.logo-container,.button-container{
+    margin:0;
+}
+@media(min-width:700px){
+    .navbar-body-container{
+        flex-direction:row;
+        /* justify-content: space-between; */
+    }
+    .logo-container{
+        /* left-margin:2rem; */
+        /* left-padding:10rem; */
+        margin-left:4rem;
+    }
+    .button-container{
+        /* right-margin:4rem; */
+        /* right-padding:2rem; */
+        margin-right:4rem;
+
+    }
+    .quote-container{
+
+        align-items: center;
+
+    }
+}
+
+.camera-icon{
+    width:2rem;
+    height:auto;
+}
+.footer-icon{
+    width:2rem;
+    height:auto;
+    padding:1rem;
+}
+.form-container{
+    margin-top:4rem;
+}
+/* .instagram-icon{
+    color:white;
+} */

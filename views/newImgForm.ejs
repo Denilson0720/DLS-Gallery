@@ -1,0 +1,16 @@
+<% layout('../layouts/boilerplate.ejs') %>
+<div>
+    <form action="/newImgCreation" method ="POST" enctype="multipart/form-data">
+        <!-- <div class = "mb-3">
+            <label for="images">New Image:</label>
+            <input type="text" id="images" name = "images">
+        </div> -->
+
+        <div class = "mb-3">
+            <label for="image" class = "form-label"></label>
+            <input class = "form-control" type="file" name = "image" multiple required>
+        </div>
+        <button class ="btn btn-success">Submit</button>
+    </form>
+</div>
+<!-- maybe -->

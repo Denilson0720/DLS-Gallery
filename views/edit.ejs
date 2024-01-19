@@ -1,0 +1,14 @@
+<%- layout('../layouts/boilerplate.ejs') %>
+<div class = "form-container">
+<h1>edit layout</h1>
+<h2>Add More Images</h2>
+<div class = "container">
+    <form action="/addImage/<%=image._id%>?_method=PUT" method ="POST" novalidate enctype="multipart/form-data">
+        <div class = "mb-3">
+            <label for="image" class = "form-label"></label>
+            <input class = "form-control" type="file" name = "image" multiple required>
+        </div>
+        <button class ="btn btn-success">Submit</button>
+    </form>
+</div>
+</div>

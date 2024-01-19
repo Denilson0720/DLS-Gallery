@@ -1,0 +1,15 @@
+<%- layout('../layouts/boilerplate.ejs') %>
+<h3>List of all image URL sources</h3>
+<!-- have access to the image array via 'image' -->
+<div>
+        <% for(let images of image.images){ %>
+        <div>
+            <a href = "<%=images.url  %>"><%=images.url %></a>
+        </div>
+        <% } %>
+</div>
+
+<div>    
+    <a class = "btn btn-info" href="/image/<%=image._id%>/edit">Add More Images</a>
+</div>
+

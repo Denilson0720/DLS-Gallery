@@ -1,0 +1,79 @@
+<% layout('../layouts/boilerplate') %>
+    <div class="container mb-5">
+        <div class = "d-flex flex-column justify-content-center align-items-center">
+            <div class ="text-center">
+                <h2 class ="fs-5 txt-container">Admin Page</h2>
+                <h3 class ="txt-container">Pictures Count: <%=image.images.length%></h3>
+            </div>
+            <div class="alert alert-warning text-center" role="alert">
+                <p>Please Note: The maximum file size for this form is 10MB!</p>
+            </div>
+
+        </div>
+        <form action="/images/<%=image._id%>/edit?_method=PUT" method="POST" novalidate class="validatedForm" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <label for="images" class="form-label">
+                    <!-- using bs-custom-file-input -->
+                    <span class="form-file-text">Add image files</span>
+                </label>
+                <input class="form-control" type="file" id="images" name="image" multiple >
+            </div>
+            <div class ="row">
+                <!-- first col -->
+                <div class ="col-4">
+                    <% for(let i=0;i<Math.floor(image.images.length/3);i++){ %>
+                        <div>
+                            <a href="<%=image.images[i].url%>">Link</a>
+                            <label for="image-<%=i%>">Delete ?</label>
+                            <div class="form-check-inline img-thumbnail">
+                                <!-- if we check off the input well be sening the img.filename value to be deleted-->
+                                <input type="checkbox" id="image-<%=i%>" name="deleteImage[]" value=<%=image.images[i].filename%>>
+                            </div>
+                            <img src="<%=image.images[i].thumbnail%>" class="img-thumbnail" alt="">
+                        </div>
+                    <% } %>
+                </div>
+
+                <!-- second col -->
+                <div class ="col-4">
+                    <% for(let i =Math.floor(image.images.length/3);i<2*Math.floor(image.images.length/3);i++){ %>
+                        <div>
+                            <a href="<%=image.images[i].url%>">Link</a>
+                            <label for="image-<%=i%>">Delete ?</label>
+                            <div class="form-check-inline img-thumbnail">
+                                <!-- if we check off the input well be sening the img.filename value to be deleted-->
+                                <input type="checkbox" id="image-<%=i%>" name="deleteImage[]" value=<%=image.images[i].filename%>>
+                            </div>
+                            <img src="<%=image.images[i].thumbnail%>" class="img-thumbnail" alt="">
+                        </div>
+                    <% } %>
+                </div>
+
+                <!-- third col -->
+                <div class ="col-4">
+                    <% for(let i =2*Math.floor(image.images.length/3);i<image.images.length;i++){ %>
+                        <div>
+                            <a href="<%=image.images[i].url%>">Link</a>
+                            <label for="image-<%=i%>">Delete ?</label>
+                            <div class="form-check-inline img-thumbnail">
+                                <!-- if we check off the input well be sening the img.filename value to be deleted-->
+                                <input type="checkbox" id="image-<%=i%>" name="deleteImage[]" value=<%=image.images[i].filename%>>
+                            </div>
+                            <img src="<%=image.images[i].thumbnail%>" class="img-thumbnail" alt="">
+                        </div>
+                    <% } %>
+                </div>
+
+            </div>
+                
+                <!-- second col -->
+             
+            
+                <div>
+                    <button class ="btn btn-warning">Submit Changes</button>
+                </div>
+
+        </form>
+        <h3>End of form</h3>
+    </div>

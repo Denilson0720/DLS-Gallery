@@ -1,0 +1,39 @@
+<% layout('../layouts/boilerplate') %>
+<div class="row form-container">
+    <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+        <div class="card shadow">
+            <img class = "card-img-top registration-img" src="https://res.cloudinary.com/duhazr5mo/image/upload/v1705277110/elizabeth-sunset_hso3qs.jpeg" alt="">
+            <div class="card-body">
+                <h5 class = "card-title">Register for Admin Access</h5>
+                <form action="/users/register" class ="validatedForm" novalidate method = "POST">
+                    <div class="mb-3">
+                        <label class="form-label" for="username">Username</label>
+                        <input class="form-control" type="text" name="username" id="username" required autofocus>
+                        <div class = "valid-feedback">Looks Good</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" required>
+                        <div class = "valid-feedback">Looks Good</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="password">Password</label>
+                        <input class="form-control" type="password" name="password" id="password" required>
+                        <div class = "valid-feedback">Looks Good</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="accessToken">Admin Key</label>
+                        <input class="form-control" type="text" name="accessToken" id="accessToken" required>
+                        <div class = "valid-feedback">Looks Good</div>
+                    </div>
+                    <div class = "d-grid gap-2">
+                    <button class = "btn btn-success">Register</button>
+                    </div>
+                
+                </form>
+            </div>
+        
+
+        </div>
+    </div>
+</div>
