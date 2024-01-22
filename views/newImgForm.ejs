@@ -1,6 +1,8 @@
 <% layout('../layouts/boilerplate.ejs') %>
-<div>
-    <form action="/newImgCreation" method ="POST" enctype="multipart/form-data">
+<div class ="container">
+    <div class = "row d-flex justify-content-center">
+        <div class = "col-8">
+        <form action="/users/create-new-category" method ="POST" enctype="multipart/form-data">
         <!-- <div class = "mb-3">
             <label for="images">New Image:</label>
             <input type="text" id="images" name = "images">
@@ -11,6 +13,8 @@
             <input class = "form-control" type="file" name = "image" multiple required>
         </div>
         <button class ="btn btn-success">Submit</button>
-    </form>
+        </form>
+        </div>
+    </div>
 </div>
 <!-- maybe -->

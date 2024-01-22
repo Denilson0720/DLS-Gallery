@@ -15,7 +15,7 @@ const methodOverride = require('method-override');
 const session  = require('express-session')
 // CONNECT FLAST, DEPENDENT ON SESSIONS, CONFIGURE SESSION FIRST
 const flash = require('connect-flash');
-const {isLoggedIn,storeReturnTo} = require('./middleware.js');
+const {isLoggedIn,storeReturnTo,validateImg} = require('./middleware.js');
 
 const {cloudinary} = require('./cloudinary');
 
@@ -29,25 +29,6 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
 
-
-// middleware
-const validateImg = ((req,res,next)=>{
-    
-    // pass our schema to be validated
-    const {error} = imageSchema.validate(req.body);
-    // if error is caught pass it as ExpressError function and onto basic error handler callback
-    if(error){
-        // map over error.detials to make join the message
-        const msg = error.details.map(el=>el.message).join(',')
-        // if error caught we throw an error 
-        // must pass the parameters in the correct order our error handler asks for 
-
-        throw new ExpressError(400,msg)
-    }else{
-        // if we find no error then we just pass onto the route handler, the end point
-        next();
-    }
-})
 // local DB
 // const dbURL = 'mongodb://localhost:27017/dls-gallery';
 // mongo atlas cluster
@@ -124,7 +105,7 @@ app.use((req,res,next)=>{
 })
 
 
-app.get('/',catchAsync(async(req,res)=>{
+app.get('/',storeReturnTo,catchAsync(async(req,res)=>{
     // old schema 
     // const image = await imageSchema.findById('65a6e5a4082e6b7cd45034c1').populate();
     // new schema, connected to mongo cluster instance
@@ -133,7 +114,7 @@ app.get('/',catchAsync(async(req,res)=>{
 }));
 // users routes
 app.get('/users/admin',isLoggedIn,catchAsync(async(req,res)=>{
-    req.flash('sucess','welcome bro! I mean admin!');
+    req.flash('sucess','Welcome bro! I mean admin!');
     const image = await imageSchema.findById('65a9eda5310423ac13d96b42').populate();
     res.render('admin',{image});
 }));
@@ -181,12 +162,7 @@ app.get('/users/logout',catchAsync(async(req,res,next)=>{
     });
 }));
 // multer middlware handles file uploads
-app.put('/images/:id/edit',isLoggedIn,upload.array('image'),catchAsync(async(req,res)=>{
-    /*
-    const{id} = req.params;
-    res.send(req.body);
-    console.log(req.body);
-    */
+app.put('/images/:id/edit',isLoggedIn,validateImg,upload.array('image'),catchAsync(async(req,res)=>{
     
     // const image = await imageSchema.findByIdAndUpdate(id,{ ...req.body.images});
     const{id} = req.params;
@@ -223,18 +199,18 @@ app.put('/images/:id/edit',isLoggedIn,upload.array('image'),catchAsync(async(req
 // OLD ROUTES, MUST INTEGRATE WITH NEW ROUTES
 // ROUTES TO CREATE A NEW imgSchema model
 // RENDER NEW CATEGORY/SCHEMA FORM
-app.get('/renderForm',(req,res)=>{
+app.get('/users/create-new-category-render',isLoggedIn,(req,res)=>{
     res.render('newImgForm');
 })
 // CREATE NEW CATEGORY/SCHEMA
-app.post('/newImgCreation',upload.array('image'),async(req,res)=>{
+app.post('/users/create-new-category',isLoggedIn,upload.array('image'),async(req,res)=>{
     try {
         // Assuming 'images' is the field name in your imageSchema
         const newImg = new imageSchema();
         // save url, and filename to images element within schema
         newImg.images = req.files.map((file) => ({ url: file.path, filename: file.filename }));
         await newImg.save();
-        res.redirect(`/showImagesCollection/${newImg._id}`);
+        res.redirect(`/images/${newImg._id}/show`);
         // res.send(newImg);
     } catch (err) {
         console.error(err);
@@ -242,15 +218,12 @@ app.post('/newImgCreation',upload.array('image'),async(req,res)=>{
     }
 });
 // SHOW THE NEW CATEGORY...FIX THIS: INTEGRATE WITH NEW ROUTES
-app.get('/showImagesCollection/:id',async(req,res)=>{
+app.get('/images/:id/show',async(req,res)=>{
     const image = await imageSchema.findById(req.params.id).populate();
-    res.render('show',{image})
-    // res.send('show page')
-    // console.log(image);
-
+    res.render('show',{image});
 })
 
-app.get('/image/:id/edit',async(req,res)=>{
+app.get('/image/:id/edit',isLoggedIn,async(req,res)=>{
     const {id} = req.params;
     const image = await imageSchema.findById(id)
     if(!image){
@@ -260,7 +233,7 @@ app.get('/image/:id/edit',async(req,res)=>{
     res.render('edit',{image});
 })
 // route to add to newImg array
-app.put('/addImage/:id',upload.array('image'),async(req,res)=>{
+app.put('/addImage/:id',isLoggedIn,upload.array('image'),async(req,res)=>{
     // add to specific image schema using its specific objectId given by mongoDB
     const{id} = req.params;
     const image  = await imageSchema.findByIdAndUpdate(id,{...req.body.image});
