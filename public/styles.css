@@ -7,9 +7,9 @@
     border-radius:10px;
     border-radius: 17px;
     background: #f3ecec;
-    box-shadow:  -7px 7px 9px #b6b1b1,
-             7px -7px 9px #ffffff;
+    box-shadow:  -7px 7px 9px #b6b1b1,7px -7px 9px #ffffff; 
 }
+
 .login-img{
     max-height:300px;
     max-width:100%;
