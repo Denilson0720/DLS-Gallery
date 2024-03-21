@@ -11,4 +11,4 @@
 
 ### DLS gallery is not yet finalized but please visit the demo🙂:
 
-<a href = "https://dls-gallery.onrender.com">DLS Gallery</a>
+<a href = "https://dls-gallery-q5o67.ondigitalocean.app/">dlsgallery.com</a>
