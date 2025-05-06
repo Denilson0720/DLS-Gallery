@@ -109,13 +109,13 @@ app.get('/',storeReturnTo,catchAsync(async(req,res)=>{
     // old schema 
     // const image = await imageSchema.findById('65a6e5a4082e6b7cd45034c1').populate();
     // new schema, connected to mongo cluster instance
-    const image = await imageSchema.findById('65a9eda5310423ac13d96b42').populate();
+    const image = await imageSchema.findById(process.env.IMAGE_ID).populate();
     res.render('index',{image})
 }));
 // users routes
 app.get('/users/admin',isLoggedIn,catchAsync(async(req,res)=>{
     req.flash('sucess','Welcome bro! I mean admin!');
-    const image = await imageSchema.findById('65a9eda5310423ac13d96b42').populate();
+    const image = await imageSchema.findById(process.env.IMAGE_ID).populate();
     res.render('admin',{image});
 }));
 app.get('/users/login-render',catchAsync(async(req,res)=>{

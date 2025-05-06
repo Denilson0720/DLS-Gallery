@@ -14,7 +14,7 @@ const UserSchema = new Schema({
     accessToken: {
         type: String,
         enum: [process.env.ACCESS_TOKEN1, process.env.ACCESS_TOKEN2],
-        default: 'qR7yFpZiXt' // Set a default value if needed
+
     }
 
 });
