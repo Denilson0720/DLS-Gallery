@@ -15,7 +15,8 @@
 ### How does DLS-Gallery work???
 _The image schema holds an array/list of images each with its own individual properties(id,filename,url).  To save space in the cluster I have hosted images in Cloudinary, which then produces an image URL to be referenced from Atlas._
 <!-- ![database structure](./public/database_structure.png) -->
-![image upload structure](/public/image_upload_diagram.png)
+<!-- ![image upload structure](/public/image_upload_diagram.png) -->
+![alt text](image-1.png)
 
 
 ### Getting Started
