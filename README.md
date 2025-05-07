@@ -1,4 +1,4 @@
-### [DLS Gallery](https://dls-gallery-q5o67.ondigitalocean.app/)
+### [DLS Gallery](https://dls-gallery-q5o67.ondigitalocean.app/) (visit dls-gallery)
 #### DLS gallery is my personal website where I display some of my favourite shots ive taken over the past few months.<br> It features user authentication and authorization via passport for any admin to have access to the deletion or uploading of new images.<br>It is designed to be have its images dynamically layed out so any admin does not have to worry about fixing any layout issues once an image is added or deleted, as it does so by itself.
 ### Table of Contents
 - [Tools](#built-with)
