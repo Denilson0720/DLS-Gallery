@@ -22,6 +22,7 @@ _The image schema holds an array/list of images each with its own individual pro
 ### Getting Started
 <details>
 <summary>Setup Instructions</summary>
+
 _DLS Gallery uses free tiers of both MongoDB Atlas and Cloudinary to store images.
 To get your own DLS Gallery Started youll need to setup free accounts for both._
 
