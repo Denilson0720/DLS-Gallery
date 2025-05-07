@@ -1,17 +1,30 @@
-# DLS Gallery
-
+### [DLS Gallery](https://dls-gallery-q5o67.ondigitalocean.app/) (visit dls-gallery)
 #### DLS gallery is my personal website where I display some of my favourite shots ive taken over the past few months.<br> It features user authentication and authorization via passport for any admin to have access to the deletion or uploading of new images.<br>It is designed to be have its images dynamically layed out so any admin does not have to worry about fixing any layout issues once an image is added or deleted, as it does so by itself.
+### Table of Contents
+- [Tools](#built-with)
+- [Overview of Project](#how-does-dls-gallery-work)
+- [Getting Started Guide](#getting-started)
 
 ### Built with:
-
-- MongoDB
+- MongoDB Atlas Cluster
 - Express
 - Cloudinary
 - Bootstrap
+- Node
+- Passport.js
+### How does DLS-Gallery work???
+_The image schema holds an array/list of images each with its own individual properties(id,filename,url).  To save space in the cluster I have hosted images in Cloudinary, which then produces an image URL to be referenced from Atlas._
 
-## Getting Started
+![alt text](/public/image-2.png)
+![alt text](/public/image-1.png)
+
+
+### Getting Started
+<details>
+<summary>Setup Instructions</summary>
 _DLS Gallery uses free tiers of both MongoDB Atlas and Cloudinary to store images.
 To get your own DLS Gallery Started youll need to setup free accounts for both._
+
 #### 1. Clone the repo
 In your chosen directory, open the terminal and run:
 
@@ -155,5 +168,5 @@ You have succesfully seeded your DB and Cloudinary folder.
 ```
 #### 14. You're all set, run the project again
 You should now be able to run the project and start adding more images from the admin screen.
+</details>
 
-<a href = "https://dls-gallery-q5o67.ondigitalocean.app/">dlsgallery.com</a>
